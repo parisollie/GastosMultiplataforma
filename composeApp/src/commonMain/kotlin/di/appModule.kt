@@ -1,17 +1,15 @@
 package di
 
 
-import data.ExpenseManager
+import com.exampleApp.db.AppDatabase
 import data.ExpenseRepoImpl
 import domain.ExpenseRepository
-import org.koin.core.module.dsl.createdAtStart
-import org.koin.core.module.dsl.withOptions
 import org.koin.dsl.module
 import presentacion.ExpensesViewModel
 
 //Vid 47
-fun appModule() = module {
-    single { ExpenseManager}.withOptions { createdAtStart() }
-    single<ExpenseRepository> { ExpenseRepoImpl(get()) }
+//Vid 52, appDatabase: AppDatabase
+fun appModule(appDatabase: AppDatabase) = module {
+    single<ExpenseRepository> { ExpenseRepoImpl(appDatabase) }
     factory { ExpensesViewModel(get()) }
 }
