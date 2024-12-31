@@ -54,7 +54,6 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import data.TitleTopBarTypes
-import gastosmultiplataforma.composeapp.generated.resources.Res
 import getColorsTheme
 import kotlinx.coroutines.launch
 import model.Expense
