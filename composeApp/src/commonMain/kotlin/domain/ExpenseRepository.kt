@@ -6,14 +6,16 @@ import model.ExpenseCategory
 //Vid 31 , creamos el repositorio
 interface ExpenseRepository {
 
-    fun getAllExpenses():List<Expense>
+    //Vid 64, ponemos suspend
+    suspend fun getAllExpenses():List<Expense>
 
-    fun addExpense(expense: Expense)
+    suspend fun addExpense(expense: Expense)
 
-    fun editExpense(expense: Expense)
+    suspend fun editExpense(expense: Expense)
 
     fun getCategories(): List<ExpenseCategory>
 
-    //Vid 32
-    fun deleteExpense(expense: Expense): List<Expense>
+    //Vid 32 y Vid 68, Vid 69
+    suspend fun deleteExpense(id: Long)
+   // suspend fun deleteExpense(expense: Expense): List<Expense>
 }
