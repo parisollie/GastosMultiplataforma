@@ -63,6 +63,9 @@ kotlin {
             //Vid 63,Ktor
             implementation(libs.ktor.client.okhttp)
             implementation(libs.kotlinx.coroutines.android)
+            //Vid 80
+            implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.3-beta")
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)

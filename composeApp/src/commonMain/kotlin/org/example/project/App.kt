@@ -19,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import data.CrossConfigDevice
+import data.SessionCache
 import data.TitleTopBarTypes
 import getColorsTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -32,14 +34,15 @@ import org.koin.compose.KoinContext
 
 @Composable
 @Preview
-fun App() {
+fun App(configDevice: CrossConfigDevice? = null) {
 
     PreComposeApp {
 
         KoinContext {
             //Vid 25
             val colors = getColorsTheme()
-            //SessionCache.configDevice = configDevice
+            //Vid 79
+            SessionCache.configDevice = configDevice
             AppTheme {
                 val navigator = rememberNavigator()
                 val titleTopBar = getTitleTopAppBar(navigator)
