@@ -1,17 +1,21 @@
 package di
 
 
-import data.ExpenseManager
+import com.exampleApp.db.AppDatabase
 import data.ExpenseRepoImpl
 import domain.ExpenseRepository
-import org.koin.core.module.dsl.createdAtStart
-import org.koin.core.module.dsl.withOptions
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
 import org.koin.dsl.module
 import presentacion.ExpensesViewModel
 
 //Vid 47
-fun appModule() = module {
-    single { ExpenseManager}.withOptions { createdAtStart() }
-    single<ExpenseRepository> { ExpenseRepoImpl(get()) }
+//Vid 52, appDatabase: AppDatabase
+//Vid 65
+fun appModule(appDatabase: AppDatabase) = module {
+    //Vid 65 add HTTP
+    single<HttpClient> { HttpClient { install(ContentNegotiation) { json() } } }
+    single<ExpenseRepository> { ExpenseRepoImpl(appDatabase, get()) }
     factory { ExpensesViewModel(get()) }
 }

@@ -1,24 +1,43 @@
 package previews
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import data.ExpenseManager
-import model.Expense
-import model.ExpenseCategory
 import presentacion.ExpensesUiState
 import ui.AllExpensesHeader
-import ui.ExpenseAmount
 import ui.ExpensesItem
 import ui.ExpensesScreen
 import ui.ExpensesTotalHeader
 
-//Vid 28
+
+@Preview
+@Composable
+fun ExpensesTotalHeaderPreview() {
+    ExpensesTotalHeader(total = 100.0)
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AllExpensesPreview() {
+    AllExpensesHeader()
+}
+
+@Preview
+@Composable
+fun ExpensesItemPreview() {
+    ExpensesItem(ExpenseManager.fakeExpenseList.first(), {})
+}
+
+@Preview
+@Composable
+fun ExpensesScreenPreview() {
+    ExpensesScreen(
+        uiState = ExpensesUiState.Success(
+            expenses = ExpenseManager.fakeExpenseList,
+            total = 1052.2
+        ), onExpenseClick = {}, onDeleteExpense = {})
+}
+/*Vid 28
 @Preview(showBackground = true)
 @Composable
 fun ExpensesTotalHeaderPreview(){
@@ -56,7 +75,7 @@ fun ExpensesScreenPreview(){
             expenses = ExpenseManager.fakeExpenseList,
             total = 1772.23
         ),
-        onExpenseClick = {})
+        onExpenseClick = {}, onDeleteExpense = {})
 
 }
 
@@ -69,4 +88,4 @@ fun ExpensesAmountPreview(){
         priceContent = 12.0,
         onPriceChange = {},
         keyboardController = LocalSoftwareKeyboardController.current)
-}
+}*/
