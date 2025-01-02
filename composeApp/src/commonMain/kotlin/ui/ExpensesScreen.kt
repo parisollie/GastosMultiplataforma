@@ -61,6 +61,7 @@ fun ExpensesScreen(
     when (uiState) {
         is ExpensesUiState.Loading -> {
             Box(modifier = Modifier.fillMaxSize().testTag(
+                //Vid 72
                 EXPENSE_SCREEN_LOADING_TEST_TAG
             ), contentAlignment = Alignment.Center) {
                 CircularProgressIndicator()
@@ -71,6 +72,7 @@ fun ExpensesScreen(
             //Vid 69
             if (uiState.expenses.isEmpty()) {
                 Box(
+                    //Vid 73 ,EXPENSE_SCREEN_SUCCESS_EMPTY_TEST_TAG
                     modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp).testTag(EXPENSE_SCREEN_SUCCESS_EMPTY_TEST_TAG),
                     contentAlignment = Alignment.Center
                 ) {
@@ -84,6 +86,7 @@ fun ExpensesScreen(
             } else {
                 LazyColumn(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp).testTag(
+                        //Vid 73
                         EXPENSE_SCREEN_SUCCESS_TEST_TAG
                     ),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -114,6 +117,7 @@ fun ExpensesScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
+                    //Vid 72 , .testTag(EXPENSE_SCREEN_ERROR_TEXT_TEST_TAG)
                     modifier = Modifier.testTag(EXPENSE_SCREEN_ERROR_TEXT_TEST_TAG),
                     text = "Error: ${uiState.message}",
                     style = MaterialTheme.typography.body1
@@ -131,6 +135,7 @@ fun ExpensesTotalHeader(total: Double) {
             contentAlignment = Alignment.CenterStart
         ) {
             Text(
+                //Vid 73,EXPENSE_SCREEN_SUCCESS_TOTAL_TEST_TAG
                 modifier = Modifier.testTag(EXPENSE_SCREEN_SUCCESS_TOTAL_TEST_TAG),
                 text = "$$total",
                 fontSize = 30.sp,
@@ -176,6 +181,7 @@ fun ExpensesItem(expense: Expense, onExpenseClick: (expense: Expense) -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp).clickable {
             onExpenseClick(expense)
+            //Vid 74
         }.testTag(EXPENSE_SCREEN_SUCCESS_CLICK_ITEM_TEST_TAG.plus("_${expense.id}")),
         backgroundColor = colors.colorExpenseItem,
         shape = RoundedCornerShape(30)
